@@ -1,0 +1,22 @@
+{
+  "routes": [
+   
+
+    {
+      "name": "products",
+      "path": "/api/products",
+      "target": "https://dummyjson.com/products",
+      "auth": false,
+      "cache": "1 minute"
+    },
+
+
+    {
+      "name": "realtime_service",
+      "path": "/socket",
+      "target": "ws://localhost:8080",
+      "auth": false,
+      "websocket": true
+    }
+  ]
+}
