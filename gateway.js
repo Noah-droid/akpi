@@ -17,8 +17,17 @@ const configPath = path.join(__dirname, 'gateway-config.json');
 let config = { routes: [] };
 
 try {
-    if (fs.existsSync(configPath)) {
+// check for CONFIG_JSON in envs
+    if (process.env.CONFIG_JSON) {
+        config = JSON.parse(process.env.CONFIG_JSON);
+        console.log("Loaded config from environment variable.");
+    } 
+    // Fallback to local file
+    else if (fs.existsSync(configPath)) {
         config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
+        console.log("Loaded config from local file.");
+    } else {
+        console.warn(" No configuration found (checked ENV and local file).");
     }
 } catch (error) {
     console.error("Failed to load config:", error.message);
