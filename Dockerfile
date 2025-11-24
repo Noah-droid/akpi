@@ -13,7 +13,7 @@ RUN npm ci --only=production
 
 COPY . .
 
-# Expose the port the app runs on
+
 EXPOSE 3000
 
 # Start the application
