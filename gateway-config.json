@@ -1,19 +1,33 @@
 {
   "routes": [
-   
-
     {
-      "name": "products",
-      "path": "/api/products",
-      "target": "https://dummyjson.com/products",
+      "name": "auth",
+      "path": "/auth",
+      "target": "http://localhost:8000",
       "auth": false,
-      "cache": "1 minute"
+      "cache": "5 minutes"
     },
-
-
     {
-      "name": "realtime_service",
-      "path": "/socket",
+      "name": "merchant",
+      "path": "/merchant",
+      "target": "http://localhost:8000",
+      "auth": false,
+      "rateLimit": {
+        "windowMs": 60000,
+        "max": 100
+      },
+      "cache": "5 minutes"
+    },
+    {
+      "name": "docs",
+      "path": "/docs",
+      "target": "http://localhost:8000",
+      "auth": false,
+      "cache": "10 minutes"
+    },
+    {
+      "name": "websocket",
+      "path": "/api",
       "target": "ws://localhost:8080",
       "auth": false,
       "websocket": true

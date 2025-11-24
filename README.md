@@ -60,10 +60,31 @@ Define your routes in `gateway-config.json`:
 
 ## Environment Variables
 
+The gateway supports configuration via environment variables in three ways:
+
+### Method 1: Using .env File (Recommended for local development)
+
+Create a `.env` file in the project root (see `.env.example` for template):
+
+```bash
+PORT=3000
+GATEWAY_API_KEY=your-secret-key
+CONFIG_JSON={"routes":[...]}
+```
+
+### Method 2: Direct Environment Variables (Recommended for Docker/Cloud)
+
+Set environment variables directly in your deployment platform:
+
 - `PORT`: Port to run the gateway on (default: 3000).
-- `GATEWAY_API_KEY`: The secret key required for protected routes (default: `default-secret-key`).
+- `GATEWAY_API_KEY`: The secret key required for protected routes (default: `akpi-secret-key`).
+- `CONFIG_JSON`: Full gateway configuration as JSON string (overrides `gateway-config.json`).
 - `TARGET_[ROUTE_NAME]`: Override the target URL for a specific route.
-  - Example: `TARGET_USERS=http://prod-user-service:8080` overrides the `users` route target.
+  - Example: `TARGET_AUTH=https://prod-auth-service.com` overrides the `auth` route target.
+
+### Method 3: Using gateway-config.json
+
+If no environment variables are set, the gateway loads configuration from `gateway-config.json`.
 
 ## Usage
 
