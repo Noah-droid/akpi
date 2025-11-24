@@ -77,6 +77,10 @@ config.routes.forEach(route => {
         target,
         changeOrigin: true,
         ws: route.websocket || false,
+        pathRewrite: route.pathRewrite || undefined,
+        onProxyReq: (proxyReq, req, res) => {
+            console.log(`[PROXY] ${req.method} ${req.path} -> ${target}${req.url}`);
+        },
         onError: (err, req, res) => {
             console.error('Proxy Error:', err);
             res.status(502).json({ error: 'Bad Gateway' });
