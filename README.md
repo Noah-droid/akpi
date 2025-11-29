@@ -2,6 +2,8 @@
 
 Akpi is a lightweight, environment-agnostic API Gateway designed to sit in front of your microservices. It handles routing, authentication, rate limiting, and caching, allowing your services to focus on business logic.
 
+**[Read the Full Documentation](https://akpi-docs.readthedocs.io/)**
+
 ## Features
 
 - **Dynamic Routing**: Configure routes via a simple JSON file.
